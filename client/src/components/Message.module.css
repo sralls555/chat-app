@@ -1,0 +1,240 @@
+/* Swipe wrapper — clips the sliding content */
+.swipeWrapper {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0; /* don't compress messages — let the container scroll instead */
+}
+
+.replyIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.6);
+  font-size: 20px;
+  color: var(--accent-light);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.05s;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 2px 16px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  will-change: transform;
+}
+
+.message:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.message.own {
+  flex-direction: row-reverse;
+}
+
+/* Own message: reply icon on the right */
+.message.own ~ .replyIcon,
+.own + .replyIcon {
+  left: auto;
+  right: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.avatarSpacer {
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  min-width: 0;
+}
+
+.own .content {
+  align-items: flex-end;
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.own .meta {
+  flex-direction: row-reverse;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  word-break: break-word;
+  position: relative;
+}
+
+.otherBubble {
+  background: var(--bg-tertiary);
+  border-bottom-left-radius: 4px;
+}
+
+.ownBubble {
+  background: var(--own-msg-bg);
+  border-bottom-right-radius: 4px;
+}
+
+.bubble.continuation {
+  /* column so replyQuote (if any) stays on top */
+  display: flex;
+  flex-direction: column;
+}
+
+.ownBubble.continuation {
+  background: var(--own-msg-bg);
+}
+
+/* Text + inline timestamp row — only when no replyTo */
+.textRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.text {
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.45;
+  flex: 1;
+}
+
+.timeInline {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.message:hover .timeInline {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .timeInline {
+    opacity: 1;
+    font-size: 10px;
+  }
+
+  .content {
+    max-width: 82%;
+  }
+}
+
+/* ── Reply quote inside bubble ── */
+.replyQuote {
+  border-left: 3px solid var(--accent-light);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 5px 8px;
+  margin-bottom: 6px;
+  max-width: 100%;
+}
+
+.replyQuoteOwn {
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.replyQuoteName {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-light);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.replyQuoteOwn .replyQuoteName {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.replyQuoteText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* System messages */
+.systemMsg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+}
+
+.systemText {
+  font-size: 13px;
+  color: var(--system-msg);
+  font-style: italic;
+}
+
+.systemTime {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Date divider */
+.dateDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px 8px;
+}
+
+.dateLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.dateText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

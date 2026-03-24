@@ -1,0 +1,167 @@
+.wrapper {
+  padding: 0 16px 12px;
+  flex-shrink: 0;
+}
+
+/* Reply preview bar */
+.replyBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--accent-light);
+  border-radius: 8px 8px 0 0;
+  padding: 8px 10px;
+  margin-bottom: -2px;
+  gap: 8px;
+}
+
+.replyBarInner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.replyBarIcon {
+  font-size: 16px;
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+.replyBarContent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.replyBarName {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.replyBarText {
+  font-size: 12px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.replyBarClose {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  min-width: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  touch-action: manipulation;
+}
+
+.replyBarClose:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.inputBox {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 10px 10px 16px;
+  transition: border-color 0.15s;
+}
+
+.inputBox:focus-within {
+  border-color: var(--accent);
+}
+
+.inputBox.disabled {
+  opacity: 0.5;
+}
+
+.textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  /* 16px prevents iOS auto-zoom on focus */
+  font-size: 16px;
+  line-height: 1.45;
+  resize: none;
+  min-height: 24px;
+  max-height: 120px;
+  padding: 0;
+  overflow-y: auto;
+  -webkit-appearance: none;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.sendBtn {
+  background: var(--bg-hover);
+  border: none;
+  border-radius: 8px;
+  /* Minimum 44x44 touch target */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+}
+
+.sendBtn.active {
+  background: var(--accent);
+  color: white;
+}
+
+.sendBtn.active:hover {
+  background: var(--accent-hover);
+}
+
+.sendBtn.active:active {
+  transform: scale(0.92);
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+.hint kbd {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 10px;
+  font-family: inherit;
+}
+
+@media (max-width: 768px) {
+  .hint {
+    display: none;
+  }
+
+  .wrapper {
+    /* Extra bottom padding for iOS home indicator */
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
