@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.css';
 
-const ROOMS = ['General', 'Random', 'Dev'];
+const ROOMS = ['General', 'Random', 'Dev', 'MoonStar'];
 
 export default function Sidebar({ currentRoom, onRoomChange, username, connected, isOpen }) {
   return (

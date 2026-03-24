@@ -13,7 +13,7 @@ const DEFAULT_ROOM = 'General';
 export default function App() {
   const [username, setUsername] = useState('');
   const [currentRoom, setCurrentRoom] = useState(DEFAULT_ROOM);
-  const [roomMessages, setRoomMessages] = useState({ General: [], Random: [], Dev: [] });
+  const [roomMessages, setRoomMessages] = useState({ General: [], Random: [], Dev: [], MoonStar: [] });
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [replyTo, setReplyTo] = useState(null);

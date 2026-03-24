@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 // Available rooms
-const ROOMS = ['General', 'Random', 'Dev'];
+const ROOMS = ['General', 'Random', 'Dev', 'MoonStar'];
 
 // Track clients: Map<ws, { username, room }>
 const clients = new Map();
